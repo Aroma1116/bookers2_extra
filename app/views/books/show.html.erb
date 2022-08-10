@@ -1,0 +1,31 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+      <!--userinfo部分-->
+      <%= render 'users/userinfo', user: @book.user %>
+      <!--新規投稿フォーム-->
+      <%= render 'form', book: @book_new %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <div class="comments-counts">
+        <%= render 'detail', book: @book %>
+      </div>
+
+      <div>
+        <table>
+          <tbody>
+            <div class="comments-index">
+              <%= render 'book_comments/comments', book: @book %>
+            </div>
+          </tbody>
+        </table>
+
+
+
+      </div>
+      <div class="comments-form">
+        <%= render 'book_comments/form', book: @book, comment: @comment %>
+      </div>
+    </div>
+  </div>
+</div>

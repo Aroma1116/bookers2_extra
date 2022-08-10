@@ -1,0 +1,16 @@
+<div class="container px-5 px-sm-0">
+  <%= render 'layouts/error', obj: @book %>
+  <div class="row">
+
+    <div class="col-md-3">
+      <!--userinfo部分-->
+      <%= render 'users/userinfo', user: current_user %>
+      <!--新規投稿フォーム-->
+      <%= render 'form', book: @book %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <!--本の一覧部分-->
+      <%= render 'index', books: @books %>
+    </div>
+  </div>
+</div>
