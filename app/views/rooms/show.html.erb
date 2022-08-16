@@ -1,13 +1,34 @@
-<h4></h4>
+<h1>
+  <% if @entries[1].user == current_user %>
+    <%= @entries[0].user.name %>さんとのチャット
+  <% else %>
+    <%= @entries[1].user.name %>さんとのチャット
+  <% end %>
+</h1>
 
   <% if @messages.present? %>
-    <% @messages.each do |m| %>
-       <%= m.content %>
-    <% end %>
+  <div class="container">
+    <div class="justify-content-center">
+      <table>
+        <thead>
+          <th>User</th>
+          <th>Chat</th>
+        </thead>
+        <tbody>
+          <% @messages.each do |m| %>
+          <tr>
+            <td><%= m.user.name %></td>
+            <td><%= m.content %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
   <% end %>
-
+<%= render 'layouts/error', obj: @message %>
   <%= form_with model: @message do |f| %>
     <%= f.text_field :content, placeholder: "メッセージを入力して下さい"%>
     <%= f.hidden_field :room_id, value: @room.id %>
-    <%= f.submit "投稿",class: 'form-submit'%>
+    <% f.submit "投稿",class: 'form-submit'%>
   <% end %>
