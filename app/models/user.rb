@@ -19,6 +19,8 @@ class User < ApplicationRecord
 
   has_many :messages, dependent: :destroy
 
+  has_many :view_counts, dependent: :destroy
+
   has_one_attached :profile_image
 
   validates :name, length: {in: 2..20}, uniqueness: true
