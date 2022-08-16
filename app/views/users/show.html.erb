@@ -10,6 +10,18 @@
           <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: 'btn btn-success' %>
         <% end %>
       <% end %>
+      <% unless @user.id == current_user.id %>
+        <% if @isRoom == true %>
+          <%= link_to "チャットへ", room_path(@roomId), class: 'btn btn-primary' %>
+        <% else %>
+          <%= form_with model: @room do |f| %>
+            <%= fields_for @entry do |e| %>
+              <%= e.hidden_field :user_id, value: @user.id %>
+            <% end %>
+            <%= f.submit "チャットへ", class: "btn btn-primary" %>
+          <% end %>
+        <% end %>
+      <% end %>
       <!--新規投稿フォーム-->
       <%= render 'books/form', book: @book %>
     </div>

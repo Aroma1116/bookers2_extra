@@ -1,0 +1,13 @@
+<h4></h4>
+
+  <% if @messages.present? %>
+    <% @messages.each do |m| %>
+       <%= m.content %>
+    <% end %>
+  <% end %>
+
+  <%= form_with model: @message do |f| %>
+    <%= f.text_field :content, placeholder: "メッセージを入力して下さい"%>
+    <%= f.hidden_field :room_id, value: @room.id %>
+    <%= f.submit "投稿",class: 'form-submit'%>
+  <% end %>
